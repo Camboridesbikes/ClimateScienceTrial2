@@ -69,7 +69,7 @@ export const data = functions.https.onRequest( async (req, resp) => {
 
     //while loops to add teams with the same score to the builder array
 
-    let counter = index - 1;
+    let counter : number = index - 1;
 
     while(data[counter] != undefined && data[counter].score === teamAtIndex.score){
 
