@@ -32,7 +32,7 @@ interface PERCENTILE_SCORES {
 
 export const data = functions.https.onRequest( async (req, resp) => {
 
-  functions.logger.info("testing sending json.", {structuredData: true} );
+  functions.logger.info("calculating percentiles...", {structuredData: true} );
 
   //get data
   const data : SCORE_DATA[] = scoreData;
@@ -67,7 +67,7 @@ export const data = functions.https.onRequest( async (req, resp) => {
     tempArray.push(teamAtIndex); // add the team to the array builder
 
 
-    //recursive helper functions to add teams with the same score to the builder array
+    //while loops to add teams with the same score to the builder array
 
     let counter = index - 1;
 
@@ -109,10 +109,7 @@ export const data = functions.https.onRequest( async (req, resp) => {
   
 
   resp.send(calculatedScores);
-});
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Test from Firebase!");
+  functions.logger.info("calculated percentiles sent.", {structuredData: true} );
 });
 
